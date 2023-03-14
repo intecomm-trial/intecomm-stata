@@ -1,0 +1,2 @@
+# intecomm-stata
+STATA scripts
