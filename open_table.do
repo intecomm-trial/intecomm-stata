@@ -12,6 +12,7 @@ local dta_filename  "`app_label'_`table_name'_${date_stamp}.dta"
 if "`add_demographics'" == "add_demographics" {
 	quietly:  include "${do_folder}demographics_and_assignment.do"
 	use "`dta_filename'"
+	drop hostname_created hostname_modified device_created device_modified
 	quietly: do "${do_folder}sites_to_country.do"
 	quietly: do "${do_folder}excluded_subjects.do"
 	drop site_id
@@ -21,6 +22,7 @@ if "`add_demographics'" == "add_demographics" {
 }
 else {
 	use "`dta_filename'"
+	drop hostname_created hostname_modified device_created device_modified
 	quietly: do "${do_folder}excluded_subjects.do"
 	quietly: do "${do_folder}sites_to_country.do"
 }
